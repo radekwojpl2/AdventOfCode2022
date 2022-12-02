@@ -1,8 +1,8 @@
-import { getMyScore, getMyScorePartTwo } from "../day-2/day-2";
+import { getGameInfoPartOne, getGameInfoPartTwo } from "../day-2/day-2";
 
 describe("part one", () => {
   test("check test data", () => {
-    return getMyScore("test-data.txt").then((x) => {
+    return getGameInfoPartOne("test-data.txt").then((x) => {
       const result = x.map((z) => z.pointsPerMove + z.matchPoints);
 
       expect(result.reduce((prev, curr) => prev + curr, 0)).toBe(15);
@@ -10,7 +10,7 @@ describe("part one", () => {
   });
 
   test("check input data", () => {
-    return getMyScore("input.txt").then((x) => {
+    return getGameInfoPartOne("input.txt").then((x) => {
       const result = x.map((z) => z.pointsPerMove + z.matchPoints);
 
       expect(result.reduce((prev, curr) => prev + curr, 0)).toBe(14375);
@@ -20,7 +20,7 @@ describe("part one", () => {
 
 describe("part two", () => {
   test("check test data", () => {
-    return getMyScorePartTwo("test-data.txt").then((x) => {
+    return getGameInfoPartTwo("test-data.txt").then((x) => {
       const result = x.map((z) => z.pointsPerMove + z.matchPoints);
 
       expect(result.reduce((prev, curr) => prev + curr, 0)).toBe(12);
@@ -28,7 +28,7 @@ describe("part two", () => {
   });
 
   test("check input data", () => {
-    return getMyScorePartTwo("input.txt").then((x) => {
+    return getGameInfoPartTwo("input.txt").then((x) => {
       const result = x.map((z) => z.pointsPerMove + z.matchPoints);
 
       expect(result.reduce((prev, curr) => prev + curr, 0)).toBe(10274);
