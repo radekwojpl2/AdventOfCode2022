@@ -1,4 +1,4 @@
-import findLetterDuplicateInRow from "../day-3/findLetterDuplicateInRow";
+import { findLetterDuplicateInRow } from "../day-3/findLetterDuplicateInRow";
 
 describe("findLetterDuplicateInRow test cases", () => {
   [
