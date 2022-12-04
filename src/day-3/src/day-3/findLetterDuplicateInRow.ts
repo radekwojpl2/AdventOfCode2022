@@ -1,10 +1,8 @@
 const findLetterDuplicateInRow = (row: string) => {
-  const compartmentDivider = row.length / 2;
-
-  const compartments = split(row, compartmentDivider);
+  const compartments = splitInTwoCompartments(row);
 
   for (const letter of compartments[0]) {
-    if (compartments[1].search(letter) !== -1) {
+    if (isWordContainsLetter(compartments[1], letter)) {
       return letter;
     }
   }
@@ -15,10 +13,11 @@ const findCommonElfLetterInThreeRows = (rows: string[]) => {
 
   const referenceRow = rows[0];
 
-  console.log(referenceRow);
-
   for (const letter of referenceRow) {
-    if (rows[1].search(letter) !== -1 && rows[2].search(letter) !== -1) {
+    if (
+      isWordContainsLetter(rows[1], letter) &&
+      isWordContainsLetter(rows[2], letter)
+    ) {
       return letter;
     }
   }
@@ -26,7 +25,13 @@ const findCommonElfLetterInThreeRows = (rows: string[]) => {
 
 export { findLetterDuplicateInRow, findCommonElfLetterInThreeRows };
 
-function split(row: string, index: number) {
+function isWordContainsLetter(compartments: string, letter: string) {
+  return compartments.search(letter) !== -1;
+}
+
+function splitInTwoCompartments(row: string) {
+  const index = row.length / 2;
+
   const result = [row.slice(0, index), row.slice(index)];
 
   return result;

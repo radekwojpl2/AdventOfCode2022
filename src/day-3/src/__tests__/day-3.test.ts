@@ -43,7 +43,7 @@ describe("input data case for part two", () => {
         .map((z) => z.priority)
         .reduce((acc, curr) => acc + curr, 0);
 
-      expect(result).toBe(70);
+      expect(result).toBe(2650);
     });
   });
 });

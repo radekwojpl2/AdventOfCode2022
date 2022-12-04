@@ -24,17 +24,12 @@ const getRowInfo = async (fileName: FileName): Promise<RowInfo[]> => {
     const letter = findLetterDuplicateInRow(line);
     if (!letter) throw new Error("Letter Not Found");
     const letterPriority = getLetterPriority(letter);
+
     result.push({ letter: letter, priority: letterPriority });
   }
 
   return Promise.resolve(result);
 };
-
-function* chunks<T>(arr: T[], n: number): Generator<T[], void> {
-  for (let i = 0; i < arr.length; i += n) {
-    yield arr.slice(i, i + n);
-  }
-}
 
 const getRowInfoPartTwo = async (fileName: FileName): Promise<RowInfo[]> => {
   const fileStream = fs.readFileSync(`src/data/${fileName}`, {
@@ -55,3 +50,9 @@ const getRowInfoPartTwo = async (fileName: FileName): Promise<RowInfo[]> => {
 };
 
 export { getRowInfo, getRowInfoPartTwo };
+
+function* chunks<T>(arr: T[], n: number): Generator<T[], void> {
+  for (let i = 0; i < arr.length; i += n) {
+    yield arr.slice(i, i + n);
+  }
+}
