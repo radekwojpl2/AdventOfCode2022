@@ -1,9 +1,8 @@
 import operateCrane90000, {
-  CraneMove,
   makeCraneMove,
   parseCraneMove,
-  makeCrane90001Move,
   operateCrane90001,
+  makeCrane90001Move,
 } from "../day-5/day-5";
 
 let testCrateStack = [
@@ -66,7 +65,7 @@ test("check test day function", () => {
 
 test("check test day function", () => {
   return operateCrane90001("input.txt", cratesStack).then((x) => {
-    expect(x).toBe("H,N,S,N,M,T,L,H,Q");
+    expect(x).toBe("R,N,L,F,D,J,M,C,T");
   });
 });
 
@@ -86,12 +85,30 @@ describe("parse crane move test cases ", () => {
 });
 
 describe("crane move test cases", () => {
-  test("test", () => {
+  test("move 1 crate from stack 1 to stack 2", () => {
     const move = makeCraneMove(craneMoveFactory(1, 1, 2), testCrateStack);
 
     console.log(move, "move");
 
     expect(move.from).toStrictEqual(["Z"]);
     expect(move.to).toStrictEqual(["M", "C", "D", "N"]);
+  });
+
+  test("move 1 crate from stack 1 to stack 2", () => {
+    const move = makeCrane90001Move(craneMoveFactory(1, 1, 2), testCrateStack);
+
+    console.log(move, "move");
+
+    expect(move.from).toStrictEqual(["Z"]);
+    expect(move.to).toStrictEqual(["M", "C", "D", "N"]);
+  });
+
+  test("move 2 crate from stack 2 to stack 2", () => {
+    const move = makeCrane90001Move(craneMoveFactory(2, 1, 2), testCrateStack);
+
+    console.log(move, "move");
+
+    expect(move.from).toStrictEqual([]);
+    expect(move.to).toStrictEqual(["M", "C", "D", "Z", "N"]);
   });
 });
