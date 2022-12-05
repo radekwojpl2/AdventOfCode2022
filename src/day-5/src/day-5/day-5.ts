@@ -22,7 +22,7 @@ const operateCrane90000 = async (
     cratesStack[move.to - 1].crate = to;
   }
 
-  return takeLastElement(cratesStack).toString();
+  return takeLastElements(cratesStack).toString();
 };
 
 export const operateCrane90001 = async (
@@ -44,10 +44,10 @@ export const operateCrane90001 = async (
     cratesStack[move.to - 1].crate = to;
   }
 
-  return takeLastElement(cratesStack).toString();
+  return takeLastElements(cratesStack).toString();
 };
 
-const takeLastElement = (crateStack: CrateStack[]) => {
+const takeLastElements = (crateStack: CrateStack[]) => {
   return crateStack.map((x) => x.crate[x.crate.length - 1]);
 };
 
@@ -98,8 +98,6 @@ export const makeCrane90001Move = (
     tmp.push(start.pop()!);
   }
 
-  // tmp = tmp.reverse();
-
   for (let index = 0; index < move; index++) {
     end.push(tmp.pop()!);
   }
@@ -108,15 +106,3 @@ export const makeCrane90001Move = (
 };
 
 export default operateCrane90000;
-
-// const cratesStack = [
-//   { index: 1, crate: ["D", "L", "V", "T", "M", "H", "F"] },
-//   { index: 2, crate: ["H", "Q", "G", "J", "C", "T", "N", "P"] },
-//   { index: 3, crate: ["R", "S", "D", "M", "P", "H"] },
-//   { index: 4, crate: ["L", "B", "V", "F"] },
-//   { index: 5, crate: ["N", "H", "G", "L", "Q"] },
-//   { index: 6, crate: ["W", "B", "D", "G", "R", "M", "P"] },
-//   { index: 7, crate: ["G", "M", "N", "R", "C", "H", "L", "Q"] },
-//   { index: 8, crate: ["C", "L", "W"] },
-//   { index: 9, crate: ["R", "D", "L", "Q", "J", "Z", "M", "T"] },
-// ];
