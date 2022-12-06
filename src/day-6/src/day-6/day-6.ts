@@ -12,11 +12,8 @@ const detectStartMarker = (fileName: FileName) => {
   var result: number = 0;
 
   for (let i = 0; i < stream.length - 4; i++) {
-    if (
-      new Set([stream[i], stream[i + 1], stream[i + 2], stream[i + 3]]).size ===
-      4
-    ) {
-      return (result = i + 3 + 1);
+    if (new Set(Array.from(stream.slice(i, i + 4))).size === 4) {
+      return (result = i + 4);
     }
   }
 
@@ -32,26 +29,9 @@ const detectStartMessage = (fileName: FileName) => {
 
   var result: number = 0;
 
-  for (let i = 0; i < stream.length - 4; i++) {
-    if (
-      new Set([
-        stream[i],
-        stream[i + 1],
-        stream[i + 2],
-        stream[i + 3],
-        stream[i + 4],
-        stream[i + 5],
-        stream[i + 6],
-        stream[i + 7],
-        stream[i + 8],
-        stream[i + 9],
-        stream[i + 10],
-        stream[i + 11],
-        stream[i + 12],
-        stream[i + 13],
-      ]).size === 14
-    ) {
-      return (result = i + 13 + 1);
+ for (let i = 0; i < stream.length - 14; i++) {
+    if (new Set(Array.from(stream.slice(i, i + 14))).size === 14) {
+      return (result = i + 14);
     }
   }
 
