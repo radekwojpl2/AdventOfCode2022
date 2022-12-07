@@ -4,7 +4,6 @@ import {
   Dir,
   FileName,
   parseInput,
-  Root,
 } from "../models/root";
 
 export const recoverFileSystem = async (fileName: FileName): Promise<Dir> => {
@@ -12,8 +11,6 @@ export const recoverFileSystem = async (fileName: FileName): Promise<Dir> => {
   let referenceDir = root;
 
   const stepsToRecover = await parseInput(fileName);
-
-  // console.log(stepsToRecover);
 
   for (const step of stepsToRecover) {
     switch (step.action) {
@@ -38,11 +35,31 @@ export const recoverFileSystem = async (fileName: FileName): Promise<Dir> => {
           )!;
         }
         break;
-
       default:
         throw new Error("can not be here");
     }
   }
 
   return Promise.resolve(root);
+};
+
+export const getPartOneResult = async (fileName: FileName) => {
+  const fileSystem = await recoverFileSystem(fileName);
+  const fileSize = getAllDirectorySizes(fileSystem).filter(
+    (size) => size < 100000
+  );
+
+  return fileSize.reduce((acc, curr) => acc + curr, 0);
+};
+
+const result: number[] = [];
+
+const getAllDirectorySizes = (dir: Dir) => {
+  result.push(dir.getDirSize());
+  if (dir.directories.length > 0) {
+    for (const x of dir.directories) {
+      getAllDirectorySizes(x);
+    }
+  }
+  return result;
 };

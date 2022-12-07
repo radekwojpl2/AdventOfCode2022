@@ -1,4 +1,4 @@
-import { Dir, parseInput } from "../day-7/models/root";
+import { Dir } from "../day-7/models/root";
 
 test("get dir i size to be 584", () => {
   //arrange
@@ -58,7 +58,3 @@ test("get dir a size to be 94853", () => {
   //assert
   expect(size).toBe(95437);
 });
-
-// test("test", () => {
-//   return parseInput("test-data.txt").then((x) => expect(true).toBe(false));
-// });

@@ -46,13 +46,6 @@ export class Dir {
   };
 }
 
-export class Root {
-  public files: File[] = [];
-  public directories: Dir[] = [];
-
-  constructor() {}
-}
-
 export const CreateDirCommand = (row: string) => {
   const data = row.split(" ");
 
@@ -65,14 +58,9 @@ export const CreateFileCommand = (row: string): File => {
   return { name: data[1], size: Number(data[0]) };
 };
 
-//LsQuery
-//PickCommand
-//GoBackCommand
-
 export type FileName = "input.txt" | "test-data.txt";
 
 export const parseInput = async (fileName: FileName) => {
-  // console.log("elko");
   const fileStream = fs.createReadStream(`src/data/${fileName}`);
 
   const rl = readline.createInterface({
@@ -80,8 +68,6 @@ export const parseInput = async (fileName: FileName) => {
     crlfDelay: Infinity,
   });
   const result: { action: string; payLoad: string }[] = [];
-
-  const isNumberAtStart = /^\d+/;
 
   for await (const line of rl) {
     switch (true) {
@@ -95,9 +81,7 @@ export const parseInput = async (fileName: FileName) => {
         result.push({ action: "createDirCommand", payLoad: line });
         break;
       default:
-        // console.log(line);
         result.push({ action: "createFileCommand", payLoad: line });
-
         break;
     }
   }

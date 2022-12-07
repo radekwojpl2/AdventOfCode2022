@@ -1,4 +1,7 @@
-import { recoverFileSystem } from "../day-7/engine/fileSystemEngine";
+import {
+  getPartOneResult,
+  recoverFileSystem,
+} from "../day-7/engine/fileSystemEngine";
 import { Dir } from "../day-7/models/root";
 
 // test("test engine mechanic", () => {
@@ -7,11 +10,9 @@ import { Dir } from "../day-7/models/root";
 //   });
 // });
 
-test("test engine mechanic part one", () => {
-  return recoverFileSystem("input.txt").then((x) => {
-    expect(getAllSmallerSizes(x).reduce((acc, curr) => acc + curr, 0)).toBe(
-      1077191
-    );
+test("test engine mechanic part one", async () => {
+  return getPartOneResult("input.txt").then((x) => {
+    expect(x).toBe(1077191);
   });
 });
 
