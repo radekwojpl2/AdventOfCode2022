@@ -31,6 +31,12 @@ export class Dir {
     return fileSize + dirSize;
   };
 
+  getActualSize() {
+    const fileSize = this.files.reduce((acc, curr) => acc + curr.size, 0);
+
+    return fileSize;
+  }
+
   addNewFile = (file: File) => {
     this.files.push(file);
   };
