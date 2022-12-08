@@ -3,7 +3,7 @@ import getAllVisibleTrees, {
   isTreeVisibleLeft,
   isTreeVisibleRight,
   isTreeVisibleTop,
-} from "../day-8/day-8";
+} from "../day-8/part-1";
 
 test("check part one", async () => {
   const visibleTrees = await getAllVisibleTrees("test-data.txt");

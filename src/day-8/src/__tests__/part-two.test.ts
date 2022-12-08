@@ -4,7 +4,7 @@ import {
   getScenicScoreRight,
   getScenicScoreTop,
   getTopScenicTreeScores,
-} from "../day-8/day-8";
+} from "../day-8/part-2";
 
 test("check part two test data", async () => {
   const score = await getTopScenicTreeScores("test-data.txt");

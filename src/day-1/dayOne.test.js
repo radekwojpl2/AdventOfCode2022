@@ -1,4 +1,3 @@
-import { jest } from "@jest/globals";
 import getCaloriesPerElf from "./dayOne.js";
 
 test("check for the last element in file", () => {
