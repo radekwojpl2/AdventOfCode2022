@@ -2,7 +2,7 @@ import { sign } from "crypto";
 import getSignals, {
   getSignalSum,
   Instruction,
-  takeUntilCycleNumber,
+  getCycleXValue,
 } from "../day-10/part-one";
 
 test("check get signal sum for test data", async () => {
@@ -20,7 +20,7 @@ test("check get signal sum for production data", async () => {
 test("check 20", async () => {
   const test = await getSignals("test-data.txt");
 
-  const signal = takeUntilCycleNumber(19, test);
+  const signal = getCycleXValue(19, test);
 
   expect(signal).toBe(21);
 
@@ -32,7 +32,7 @@ test("check 20", async () => {
 test("check 60", async () => {
   const test = await getSignals("test-data.txt");
 
-  const signal = takeUntilCycleNumber(59, test);
+  const signal = getCycleXValue(59, test);
 
   expect(signal).toBe(19);
 
@@ -44,7 +44,7 @@ test("check 60", async () => {
 test("check 100", async () => {
   const test = await getSignals("test-data.txt");
 
-  const signal = takeUntilCycleNumber(99, test);
+  const signal = getCycleXValue(99, test);
 
   expect(signal).toBe(18);
 
@@ -56,7 +56,7 @@ test("check 100", async () => {
 test("check 140", async () => {
   const test = await getSignals("test-data.txt");
 
-  const signal = takeUntilCycleNumber(139, test);
+  const signal = getCycleXValue(139, test);
 
   expect(signal).toBe(21);
 
@@ -68,7 +68,7 @@ test("check 140", async () => {
 test("check 180", async () => {
   const test = await getSignals("test-data.txt");
 
-  const signal = takeUntilCycleNumber(179, test);
+  const signal = getCycleXValue(179, test);
 
   expect(signal).toBe(16);
 
@@ -82,7 +82,7 @@ test("check 220", async () => {
 
   console.log(test.length, "elko");
 
-  const signal = takeUntilCycleNumber(219, test);
+  const signal = getCycleXValue(219, test);
 
   expect(signal).toBe(18);
 
@@ -92,13 +92,13 @@ test("check 220", async () => {
 });
 
 test("take until 20 instruction and get signal", () => {
-  const signal = takeUntilCycleNumber(20, instructions);
+  const signal = getCycleXValue(20, instructions);
 
   expect(signal).toBe(21);
 });
 
 test("take until 20 instruction and get signal", () => {
-  const signal = takeUntilCycleNumber(60, instructions);
+  const signal = getCycleXValue(60, instructions);
 
   expect(signal).toBe(19);
 });
